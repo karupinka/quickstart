@@ -1,25 +1,26 @@
 package org.example.tests;
 
-import org.example.common.CommonScreen;
-import org.example.screens.avs.MainScreen;
-import org.example.screens.avs.OfferScreen;
+import org.example.common.Web;
+import org.example.screens.avs.MainPage;
+import org.example.screens.avs.OfferPage;
 import org.junit.After;
 import org.junit.Test;
 
 public class AVSTest {
-    CommonScreen commonScreen = new CommonScreen();
-    MainScreen mainScreen = new MainScreen();
-    OfferScreen offerScreen = new OfferScreen();
+    Web web = new Web();
+    MainPage mainScreen = new MainPage();
+    OfferPage offerScreen = new OfferPage();
 
     @After
     public void tearDown() {
-        commonScreen.close();
+        web.close();
     }
 
     @Test
     public void testMaximumNumberOfAdultsPassengers()
     {
-        commonScreen.get("https://www.aviasales.ru/");
+        web.get("https://www.aviasales.ru/");
+        mainScreen.assertAdultPassengerCount(1);
         mainScreen.clickAdditionalElement();
         mainScreen.addAdultPassenger(10);
         mainScreen.assertAdultPassengerCount(9);
@@ -28,8 +29,25 @@ public class AVSTest {
     @Test
     public void testCheckAllSpecialOfferParameters()
     {
-        commonScreen.get("https://www.aviasales.ru/offers");
+        web.get("https://www.aviasales.ru/offers");
         offerScreen.assertOriginSelectedValue("all");
         offerScreen.assertDestinationSelectedValue("all");
+    }
+
+    @Test
+    public void testOriginAirportEmptyFieldValidation()
+    {
+        web.get("https://www.aviasales.ru/");
+        mainScreen.search();
+        mainScreen.assertDepartureAirportErrorMessage("Укажите город прибытия");
+    }
+
+    @Test
+    public void testOriginAirportInvalidSymbolsFieldValidation()
+    {
+        web.get("https://www.aviasales.ru/");
+        mainScreen.setDepartureAirport("999999");
+        mainScreen.search();
+        mainScreen.assertDepartureAirportErrorMessage("Укажите город прибытия");
     }
 }

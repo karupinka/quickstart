@@ -1,11 +1,11 @@
 package org.example.screens.crm;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NewContactScreen extends CommonScreen {
+public class NewContactPage extends CommonPage {
     By byLastNameField = By.name("crm_contact[lastName]");
     By byFirstNameField = By.name("crm_contact[firstName]");
     By byJobField = By.name("crm_contact[jobTitle]");

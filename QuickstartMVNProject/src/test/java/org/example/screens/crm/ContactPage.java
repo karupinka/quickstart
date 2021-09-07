@@ -1,13 +1,13 @@
 package org.example.screens.crm;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.Assert.assertTrue;
 
-public class ContactScreen extends CommonScreen {
+public class ContactPage extends CommonPage {
     By byAddContactButton = By.xpath("//a[text()=\"Создать контактное лицо\"]");
     By byCreateAlert = By.xpath("//*[text()=\"Контактное лицо сохранено\"]");
 

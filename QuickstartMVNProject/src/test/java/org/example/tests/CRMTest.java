@@ -1,5 +1,5 @@
 package org.example.tests;
-import org.example.common.CommonScreen;
+import org.example.common.Web;
 import org.example.screens.crm.*;
 import org.junit.After;
 import org.junit.Before;
@@ -10,17 +10,17 @@ import org.junit.Test;
  */
 public class CRMTest
 {
-    CommonScreen commonScreen = new CommonScreen();
-    LoginScreen loginScreen = new LoginScreen();
-    MainScreen mainScreen = new MainScreen();
-    ContactScreen contactScreen = new ContactScreen();
-    NewContactScreen newContactScreen = new NewContactScreen();
-    MyProjectScreen myProjectScreen = new MyProjectScreen();
-    NewProjectScreen newProjectScreen = new NewProjectScreen();
+    Web web = new Web();
+    LoginPage loginScreen = new LoginPage();
+    MainPage mainScreen = new MainPage();
+    ContactPage contactScreen = new ContactPage();
+    NewContactPage newContactScreen = new NewContactPage();
+    MyProjectPage myProjectScreen = new MyProjectPage();
+    NewProjectPage newProjectScreen = new NewProjectPage();
 
     @Before
     public void setUp() {
-        commonScreen.get("https://crm.geekbrains.space/");
+        web.get("https://crm.geekbrains.space/");
         loginScreen.setLogin("Applanatest1");
         loginScreen.setPassword("Student2020!");
         loginScreen.login();
@@ -28,7 +28,7 @@ public class CRMTest
 
     @After
     public void tearDown() {
-        commonScreen.close();
+        web.close();
     }
 
     @Test

@@ -1,12 +1,12 @@
 package org.example.screens.avs;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import java.util.Set;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class OfferScreen extends CommonScreen {
+public class OfferPage extends CommonPage {
     By byOriginSelectedValueElement = By.name("offers_filter_origin");
     By byDestinationSelectedValueElement = By.name("offers_filter_destination");
 

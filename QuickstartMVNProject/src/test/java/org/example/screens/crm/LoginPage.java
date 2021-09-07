@@ -1,10 +1,10 @@
 package org.example.screens.crm;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class LoginScreen extends CommonScreen {
+public class LoginPage extends CommonPage {
     By byEmailField = By.name("_username");
     By byPasswordField = By.name("_password");
     By byLogin = By.id("_submit");

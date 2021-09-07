@@ -1,11 +1,11 @@
 package org.example.screens.crm;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class MainScreen extends CommonScreen {
+public class MainPage extends CommonPage {
     By byContractorsButton = By.xpath("//span[text()=\"Контрагенты\"]");
     By byProjectButton = By.xpath("//span[text()=\"Проекты\"]");
 

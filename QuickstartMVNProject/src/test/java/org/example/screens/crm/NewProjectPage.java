@@ -1,6 +1,6 @@
 package org.example.screens.crm;
 
-import org.example.common.CommonScreen;
+import org.example.common.CommonPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.Date;
 
-public class NewProjectScreen extends CommonScreen {
+public class NewProjectPage extends CommonPage {
     By byNameField = By.name("crm_project[name]");
     By byBusinessUnitField = By.name("crm_project[businessUnit]");
     By byOrganisationField = By.cssSelector(".select2-default > .select2-chosen");
