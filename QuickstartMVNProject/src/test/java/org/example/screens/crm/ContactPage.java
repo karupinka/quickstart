@@ -8,17 +8,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.Assert.assertTrue;
 
 public class ContactPage extends CommonPage {
+    // By
     By byAddContactButton = By.xpath("//a[text()=\"Создать контактное лицо\"]");
     By byCreateAlert = By.xpath("//*[text()=\"Контактное лицо сохранено\"]");
 
-
-    public void clickAddContactButton() {
+    public ContactPage clickAddContactButton() {
         WebElement addContactButton = wait.until(ExpectedConditions.presenceOfElementLocated(byAddContactButton));
         addContactButton.click();
+        return this;
     }
 
-    public void assertCreateNewContact() {
-        WebElement element = (wait.until(ExpectedConditions.elementToBeClickable(byCreateAlert)));
-        assertTrue(element.isDisplayed());
+    public ContactPage assertCreateNewContact() {
+        WebElement createAlert = (wait.until(ExpectedConditions.elementToBeClickable(byCreateAlert)));
+        assertTrue(createAlert.isDisplayed());
+        return this;
     }
 }

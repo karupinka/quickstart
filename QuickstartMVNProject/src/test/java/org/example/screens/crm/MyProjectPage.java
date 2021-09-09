@@ -8,16 +8,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.Assert.assertTrue;
 
 public class MyProjectPage extends CommonPage {
+    // By
     By byCreateNewProjectButton = By.xpath("//a[text()=\"Создать проект\"]");
     By byCreateAlert = By.xpath("//*[text()=\"Проект сохранен\"]");
 
-    public void clickCreateNewProjectButton() {
+    public MyProjectPage clickCreateNewProjectButton() {
         WebElement createNewProjectButton = wait.until(ExpectedConditions.presenceOfElementLocated(byCreateNewProjectButton));
         createNewProjectButton.click();
+        return this;
     }
 
-    public void assertCreateNewContact() {
-        WebElement element = (wait.until(ExpectedConditions.elementToBeClickable(byCreateAlert)));
-        assertTrue(element.isDisplayed());
+    public MyProjectPage assertCreateNewContact() {
+        WebElement createdAlert = (wait.until(ExpectedConditions.elementToBeClickable(byCreateAlert)));
+        assertTrue(createdAlert.isDisplayed());
+        return this;
     }
 }

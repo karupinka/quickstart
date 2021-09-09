@@ -2,24 +2,28 @@ package org.example.screens.avs;
 
 import org.example.common.CommonPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import java.util.Set;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class OfferPage extends CommonPage {
+    // By
     By byOriginSelectedValueElement = By.name("offers_filter_origin");
     By byDestinationSelectedValueElement = By.name("offers_filter_destination");
 
-    public void assertOriginSelectedValue(String expected) {
-        String value = driver.findElement(byOriginSelectedValueElement).getAttribute("value");
-//        String value = driver.findElement(byOriginSelectedValueElement).getText();
+    public OfferPage assertOriginSelectedValue(String expected) {
+        WebElement originSelectedValueElement = driver.findElement(byOriginSelectedValueElement);
+        String value = originSelectedValueElement.getAttribute("value");
         assertThat(value, is(expected));
+        return this;
     }
 
-    public void assertDestinationSelectedValue(String expected) {
-        String value = driver.findElement(byDestinationSelectedValueElement).getAttribute("value");
-        //String value = driver.findElement(byDestinationSelectedValueElement).getText();
-
+    public OfferPage assertDestinationSelectedValue(String expected) {
+        WebElement destinationSelectedValueElement = driver.findElement(byDestinationSelectedValueElement);
+        String value = destinationSelectedValueElement.getAttribute("value");
         assertThat(expected, is(expected));
+        return this;
     }
 }

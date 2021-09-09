@@ -8,8 +8,8 @@ import org.junit.Test;
 
 public class AVSTest {
     Web web = new Web();
-    MainPage mainScreen = new MainPage();
-    OfferPage offerScreen = new OfferPage();
+    MainPage mainPage = new MainPage();
+    OfferPage offerPage = new OfferPage();
 
     @After
     public void tearDown() {
@@ -20,34 +20,37 @@ public class AVSTest {
     public void testMaximumNumberOfAdultsPassengers()
     {
         web.get("https://www.aviasales.ru/");
-        mainScreen.assertAdultPassengerCount(1);
-        mainScreen.clickAdditionalElement();
-        mainScreen.addAdultPassenger(10);
-        mainScreen.assertAdultPassengerCount(9);
+        mainPage.assertAdultPassengerCount(1)
+                .clickAdditionalElement()
+                .addAdultPassenger(10)
+                .assertAdultPassengerCount(9);
     }
 
     @Test
     public void testCheckAllSpecialOfferParameters()
     {
         web.get("https://www.aviasales.ru/offers");
-        offerScreen.assertOriginSelectedValue("all");
-        offerScreen.assertDestinationSelectedValue("all");
+        offerPage
+                .assertOriginSelectedValue("all")
+                .assertDestinationSelectedValue("all");
     }
 
     @Test
     public void testOriginAirportEmptyFieldValidation()
     {
         web.get("https://www.aviasales.ru/");
-        mainScreen.search();
-        mainScreen.assertDepartureAirportErrorMessage("Укажите город прибытия");
+        mainPage
+                .search()
+                .assertDepartureAirportErrorMessage("Укажите город прибытия");
     }
 
     @Test
     public void testOriginAirportInvalidSymbolsFieldValidation()
     {
         web.get("https://www.aviasales.ru/");
-        mainScreen.setDepartureAirport("999999");
-        mainScreen.search();
-        mainScreen.assertDepartureAirportErrorMessage("Укажите город прибытия");
+        mainPage
+                .setDepartureAirport("999999")
+                .search()
+                .assertDepartureAirportErrorMessage("Укажите город прибытия");
     }
 }

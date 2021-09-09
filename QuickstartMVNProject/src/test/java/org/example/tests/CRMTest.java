@@ -11,19 +11,20 @@ import org.junit.Test;
 public class CRMTest
 {
     Web web = new Web();
-    LoginPage loginScreen = new LoginPage();
-    MainPage mainScreen = new MainPage();
-    ContactPage contactScreen = new ContactPage();
-    NewContactPage newContactScreen = new NewContactPage();
-    MyProjectPage myProjectScreen = new MyProjectPage();
-    NewProjectPage newProjectScreen = new NewProjectPage();
+    LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
+    ContactPage contactPage = new ContactPage();
+    NewContactPage newContactPage = new NewContactPage();
+    MyProjectPage myProjectPage = new MyProjectPage();
+    NewProjectPage newProjectPage = new NewProjectPage();
 
     @Before
     public void setUp() {
         web.get("https://crm.geekbrains.space/");
-        loginScreen.setLogin("Applanatest1");
-        loginScreen.setPassword("Student2020!");
-        loginScreen.login();
+        loginPage
+                .setLogin("Applanatest1")
+                .setPassword("Student2020!")
+                .login();
     }
 
     @After
@@ -34,29 +35,29 @@ public class CRMTest
     @Test
     public void testAddNewContact()
     {
-        mainScreen.choseContactItem();
-        contactScreen.clickAddContactButton();
-        newContactScreen.setLastName("Тестовый");
-        newContactScreen.setFirstName("Юзер");
-        newContactScreen.setOrganisation("«Все организации»");
-        newContactScreen.setJob("qa");
-        newContactScreen.saveData();
-        contactScreen.assertCreateNewContact();
+        mainPage.choseContactItem();
+        contactPage.clickAddContactButton();
+        newContactPage.setLastName("Тестовый")
+                .setFirstName("Юзер")
+                .setOrganisation("«Все организации»")
+                .setJob("qa")
+                .saveData();
+        contactPage.assertCreateNewContact();
     }
 
     @Test
     public void testCreateNewProject()
     {
-        mainScreen.choseMyProjectItem();
-        myProjectScreen.clickCreateNewProjectButton();
-        newProjectScreen.setName();
-        newProjectScreen.setOrganisation("«Все организации»");
-        newProjectScreen.setBusinessUnit(1);
-        newProjectScreen.setCurator(1);
-        newProjectScreen.setRP(1);
-        newProjectScreen.setAdministrator(1);
-        newProjectScreen.setManager(1);
-        newProjectScreen.saveData();
-        myProjectScreen.assertCreateNewContact();
+        mainPage.choseMyProjectItem();
+        myProjectPage.clickCreateNewProjectButton();
+        newProjectPage.setName()
+                .setOrganisation("«Все организации»")
+                .setBusinessUnit(1)
+                .setCurator(1)
+                .setRP(1)
+                .setAdministrator(1)
+                .setManager(1)
+                .saveData();
+        myProjectPage.assertCreateNewContact();
     }
 }

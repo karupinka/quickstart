@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Date;
 
 public class NewProjectPage extends CommonPage {
+    // By
     By byNameField = By.name("crm_project[name]");
     By byBusinessUnitField = By.name("crm_project[businessUnit]");
     By byOrganisationField = By.cssSelector(".select2-default > .select2-chosen");
@@ -18,53 +19,61 @@ public class NewProjectPage extends CommonPage {
     By byManagerField = By.name("crm_project[manager]");
     By bySaveButton = By.cssSelector(".btn-group:nth-child(4) > .btn");
 
-    public void setName() {
+    public NewProjectPage setName() {
         WebElement nameField = wait.until(ExpectedConditions.presenceOfElementLocated(byNameField));
         nameField.sendKeys(createUniqueName());
+        return this;
     }
 
-    public void setOrganisation(String text) {
+    public NewProjectPage setOrganisation(String text) {
         WebElement organisationElement = driver.findElement(byOrganisationField);
         String xpathItem = "//div[text()=\"" + text + "\"]";
         organisationElement.click();
         WebElement organisationItem = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathItem)));
         organisationItem.click();
+        return this;
     }
 
-    public void setBusinessUnit(int index) {
-        WebElement element = driver.findElement(byBusinessUnitField);
-        element.click();
-        Select businessUnitElement = new Select(element);
+    public NewProjectPage setBusinessUnit(int index) {
+        WebElement businessUnitField = driver.findElement(byBusinessUnitField);
+        businessUnitField.click();
+        Select businessUnitElement = new Select(businessUnitField);
         businessUnitElement.selectByIndex(index);
+        return this;
     }
 
-    public void setCurator(int index) {
-        WebElement element = driver.findElement(byCuratorField);
-        Select curatorElement = new Select(element);
+    public NewProjectPage setCurator(int index) {
+        WebElement curatorField = driver.findElement(byCuratorField);
+        Select curatorElement = new Select(curatorField);
         curatorElement.selectByIndex(index);
+        return this;
     }
 
-    public void setRP(int index) {
-        WebElement element = driver.findElement(byRPField);
-        Select prElement = new Select(element);
+    public NewProjectPage setRP(int index) {
+        WebElement rp = driver.findElement(byRPField);
+        Select prElement = new Select(rp);
         prElement.selectByIndex(index);
+        return this;
     }
 
-    public void setAdministrator(int index) {
-        WebElement element = driver.findElement(byAdministratorField);
-        Select AdministratorElement = new Select(element);
+    public NewProjectPage setAdministrator(int index) {
+        WebElement administratorField = driver.findElement(byAdministratorField);
+        Select AdministratorElement = new Select(administratorField);
         AdministratorElement.selectByIndex(index);
+        return this;
     }
 
-    public void setManager(int index) {
-        WebElement element = driver.findElement(byManagerField);
-        Select managerElement = new Select(element);
+    public NewProjectPage setManager(int index) {
+        WebElement managerField = driver.findElement(byManagerField);
+        Select managerElement = new Select(managerField);
         managerElement.selectByIndex(index);
+        return this;
     }
 
-    public void saveData() {
+    public NewProjectPage saveData() {
         WebElement saveButton = driver.findElement(bySaveButton);
         saveButton.click();
+        return this;
     }
 
     private String createUniqueName() {
