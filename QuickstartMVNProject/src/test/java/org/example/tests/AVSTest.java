@@ -1,18 +1,28 @@
 package org.example.tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import org.example.common.CommonTest;
 import org.example.common.Web;
 import org.example.screens.avs.MainPage;
 import org.example.screens.avs.OfferPage;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-public class AVSTest {
-    Web web = new Web();
+public class AVSTest extends CommonTest {
     MainPage mainPage = new MainPage();
     OfferPage offerPage = new OfferPage();
 
-    @After
+    @BeforeEach
+    public void setUp() {
+        super.setUp();
+    }
+
+    @AfterEach
     public void tearDown() {
+        web.createBrowserLogs();
         web.close();
     }
 
@@ -36,6 +46,9 @@ public class AVSTest {
     }
 
     @Test
+    @Owner("karupinka")
+    @Epic("Search Form")
+    @DisplayName("Валидация пустого поля Аэропорта прилета")
     public void testOriginAirportEmptyFieldValidation()
     {
         web.get("https://www.aviasales.ru/");

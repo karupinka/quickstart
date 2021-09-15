@@ -1,25 +1,27 @@
 package org.example.tests;
+
+import org.example.common.CommonTest;
+import org.example.common.TestWebDriverEventListener;
 import org.example.common.Web;
 import org.example.screens.crm.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 
-/**
- * Unit test for simple App.
- */
-public class CRMTest
+public class CRMTest extends CommonTest
 {
-    Web web = new Web();
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
     ContactPage contactPage = new ContactPage();
     NewContactPage newContactPage = new NewContactPage();
     MyProjectPage myProjectPage = new MyProjectPage();
     NewProjectPage newProjectPage = new NewProjectPage();
+    private WebDriverEventListener webDriverEventListener = new TestWebDriverEventListener();
 
-    @Before
+    @BeforeEach
     public void setUp() {
+        super.setUp();
         web.get("https://crm.geekbrains.space/");
         loginPage
                 .setLogin("Applanatest1")
@@ -27,7 +29,7 @@ public class CRMTest
                 .login();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         web.close();
     }
